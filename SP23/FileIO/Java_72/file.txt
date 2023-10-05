@@ -1,0 +1,2 @@
+Xin chào, mình là Sơn Trà Đỗ
+Đây là dữ liệu: kajdshfgkasStudent{id=100, name=Nguyen Van A}

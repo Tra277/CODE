@@ -1,0 +1,118 @@
+Create database WS3
+go
+use WS3
+go
+CREATE TABLE KhachHang (
+    MAKH NVARCHAR(5) primary key,
+    TENKH NVARCHAR(30) not null,
+    DIACHI NVARCHAR(50),
+    DT NVARCHAR(10) check (len(DT) between 7 and 10),
+    EMAIL NVARCHAR(30)
+);
+
+go
+CREATE TABLE VATTU (
+    MAVT NVARCHAR(5) primary key,
+    TENVT NVARCHAR(30) NOT NULL,
+    DVT NVARCHAR(20),
+    GIAMUA INT CHECK (GIAMUA > 0),
+    SLTON INT CHECK (SLTON >= 0)
+);
+go
+CREATE TABLE HOADON (
+    MAHD NVARCHAR(10) primary key,
+    NGAY DATE check( NGAY < getDate()),
+    MAKH NVARCHAR(5) FOREIGN KEY REFERENCES KhachHang(MaKH),
+    TONGTG INT
+);
+go
+CREATE TABLE CHITIETHOADON (
+    MAHD NVARCHAR(10),
+    MAVT NVARCHAR(5),
+    SL INT,		
+    KHUYENMAI INT,	
+    GIABAN INT,
+    FOREIGN KEY (MAHD) REFERENCES HOADON(MAHD),
+    FOREIGN KEY (MAVT) REFERENCES VATTU(MAVT),
+	PRIMARY KEY (MAHD, MAVT)
+);
+--
+INSERT INTO VATTU (MAVT, TENVT, DVT, GIAMUA, SLTON) VALUES
+('VT01', 'XI MANG', 'BAO', 50000, 5000),
+('VT02', 'CAT', 'KHOI', 45000, 50000),
+('VT03', 'GACH ONG', 'VIEN', 120, 800000),
+('VT04', 'GACH THE', 'VIEN', 110, 800000),
+('VT05', 'DA LON', 'KHOI', 25000, 100000),
+('VT06', 'DA NHO', 'KHOI', 33000, 100000);
+--
+INSERT INTO KhachHang (MAKH, TENKH, DIACHI, DT, EMAIL) VALUES
+('KH01', 'NGUYEN THI BE', 'TAN BINH', '8457895', 'bnt@yahoo.com'),
+('KH02', 'LE HOANG NAM', 'BINH CHANH', '9878987', 'namlehoang@abc.com.vn'),
+('KH03', 'TRAN THI CHIEU', 'TAN BINH', '8457895', NULL),
+('KH04', 'MAI THI QUE ANH', 'BINH CHANH', NULL, NULL),
+('KH05', 'LE VAN SANG', 'QUAN 10', NULL, 'sanglv@hcm.vnn.vn'),
+('KH06', 'TRAN HOANG KHAI', 'TAN BINH', '8457897', NULL);
+--
+INSERT INTO HOADON (MAHD, NGAY, MAKH, TONGTG) VALUES
+('HD001', '2000-05-12', 'KH01', 0),
+('HD002', '2000-05-25', 'KH02', 0),
+('HD003', '2000-05-25', 'KH01', 0),
+('HD004', '2000-05-25', 'KH04', 0),
+('HD005', '2000-05-26', 'KH04', 0),
+('HD006', '2000-06-02', 'KH03', 0),
+('HD007', '2000-06-22', 'KH04', 0),
+('HD008', '2000-06-25', 'KH03', 0),
+('HD009', '2000-08-15', 'KH04', 0),
+('HD010', '2000-09-30', 'KH01', 0);
+--
+INSERT INTO CHITIETHOADON (MAHD, MAVT, SL, KHUYENMAI, GIABAN) VALUES
+('HD001', 'VT01', 5, 0, 52000),
+('HD001', 'VT05', 10, 0, 30000),
+('HD002', 'VT03', 10000, 0, 150),
+('HD003', 'VT02', 20, 0, 55000),
+('HD004', 'VT03', 50000, 0, 150),
+('HD004', 'VT04', 20000, 0, 120),
+('HD005', 'VT05', 10, 0, 30000),
+('HD006', 'VT04', 10000, 0, 120),
+('HD007', 'VT04', 20000, 0, 125),
+('HD008', 'VT01', 100, 0, 55000),
+('HD009', 'VT02', 25, 0, 48000),
+('HD010', 'VT01', 25, 0, 57000);
+--
+-- cau 2
+Select MAKH,TENKH,DIACHI,DT,EMAIL
+from KhachHang
+where DIACHI like 'TAN BINH'
+-- cau 3
+Select MAVT,TENVT,DVT,GIAMUA,SLTON
+from VATTU
+where TENVT like '%GACH%'
+-- cau 4
+select MAHD,NGAY,TENKH,DIACHI,DT
+from HOADON h join KhachHang k on h.MAKH=k.MAKH
+order by NGAY
+-- cau 5
+Select k.MAKH,DIACHI,DT
+from HOADON h join KhachHang k on h.MAKH=k.MAKH
+where MONTH(Ngay) <> 6
+-- cau 6
+select h.MAHD,v.MAVT,TENVT,DVT,GIABAN,GIAMUA,SL, GIAMUA*SL as TriGiaMua, GIABAN*SL TriGiaBan
+from HOADON h join CHITIETHOADON c on h.MAHD=c.MAHD
+	join VATTU v on v.MAVT=c.MAVT
+	where GIABAN>=GIAMUA
+-- cau 7
+/*
+SELECT k.MAKH, TENKH, DIACHI, SUM(GIABAN * SL) AS TongGiaTri
+FROM HOADON h
+JOIN CHITIETHOADON c ON h.MAHD = c.MAHD
+JOIN KhachHang k ON k.MAKH = h.MAKH
+GROUP BY k.MAKH, TENKH, DIACHI
+HAVING SUM(GIABAN * SL) = (SELECT MAX(TongGiaTri) FROM
+                            (SELECT k.MAKH, SUM(GIABAN * SL) AS TongGiaTri
+                             FROM HOADON h
+                             JOIN CHITIETHOADON c ON h.MAHD = c.MAHD
+                             JOIN KhachHang k ON k.MAKH = h.MAKH
+                             GROUP BY k.MAKH) AS Subquery);
+							 */
+-- cau 8 
+	

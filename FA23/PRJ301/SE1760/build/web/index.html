@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="MyServlet_URL" method="POST">
+            <p>UserName<input type="text" name="userName" value="" /></p>
+            <p>PassWord<input type="password" name="pass" value="" /></p>
+            <p>Schedule 
+                <input type="checkbox" name="schedule" value="1" />AM
+                <input type="checkbox" name="schedule" value="2" />PM
+                <input type="checkbox" name="schedule" value="3" />Evening
+            </p>
+            <p> <input type="submit" value="Login" />   
+                <input type="submit" value="Clear" />
+            </p>
+        </form>
+        <p>  
+            <a href="MyServlet_URL?para1=132&para2=1000">Send</a>
+        </p>
+    </body>
+</html>

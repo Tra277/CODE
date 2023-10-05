@@ -1,0 +1,4 @@
+Duc Minh  | 20  | 1000.0 
+Son Tra   | 25  | 10000.0
+Do Son Tra | 20  | 2000.0 
+Nguyen Thu Huyen| 20  | 1500.0 
