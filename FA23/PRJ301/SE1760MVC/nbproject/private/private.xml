@@ -3,12 +3,43 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/web/JSP/DisplayProduct.jsp</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/controller/EmployeeController.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/controller/EmployeeTerritoryController.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/model/DAOTerritory.java</file>
             <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/web/addProduct.html</file>
-            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/model/DAOProduct.java</file>
-            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/web/ProductManager.html</file>
-            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/web/index.html</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/model/DAOEmployeeTerritory.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/model/DAOCustomer.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/entity/Region.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/controller/TerritoryController.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/entity/OrderDetail.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/entity/Customer.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/model/DAOOrderDetail.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/entity/Supplier.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/controller/categoryController.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/controller/OrderController.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/controller/customerController.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/controller/SupplierController.java</file>
             <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/controller/ProductController.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/web/JSP/DisplayProduct.jsp</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/controller/OrderDetailController.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/entity/Category.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/model/DAOProduct.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/entity/Product.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/model/DAOEmployee.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/entity/EmployeeTerritory.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/controller/ShipperController.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/controller/RegionController.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/model/DAOSupplier.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/model/DAOOrder.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/web/ProductManager.html</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/model/DAORegion.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/web/index.html</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/entity/Employee.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/entity/Order.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/entity/Shipper.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/entity/Territory.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/model/DAOShipper.java</file>
+            <file>file:/D:/Code/FA23/PRJ301/SE1760MVC/src/java/model/DAOCategory.java</file>
         </group>
     </open-files>
 </project-private>
