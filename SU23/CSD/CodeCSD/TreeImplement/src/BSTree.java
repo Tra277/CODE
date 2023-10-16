@@ -141,81 +141,86 @@ public class BSTree {
         }
     }
 
-    void deleteByCopy(int x) {
-        if (root == null) {
-            System.out.println("The tree is empty");
-            return;
+    void deleteByCopy(Node x) {
+    if (root == null) {
+        System.out.println("The tree is empty");
+        return;
+    }
+    Node f, p; // f will be the father of p;
+    f = null;
+    p = root;
+    while (p != null) {
+        if (p.info.sound == x.info.sound) {
+            break; // found the node to delete
         }
-        Node f, p; //f will be father of p;
-        f = null;
-        p = root;
-        while (p != null) {
-            if (p.info == x) {
-                break;//found the x
-            }
-            f = p;
-            if (x < p.info) {
-                p = p.left;
+        f = p;
+        if (x.info.sound < p.info.sound) {
+            p = p.left;
+        } else {
+            p = p.right;
+        }
+    }
+    if (p == null) {
+        System.out.println("The key " + x + " does not exist, no deletion");
+        return;
+    } // Not found
+    // Case 1: p is a leaf node
+    if (p.left == null && p.right == null) {
+        if (f == null) { // p is root
+            root = null;
+        } else {
+            if (p == f.left) {
+                f.left = null;
             } else {
-                p = p.right;
+                f.right = null;
             }
         }
-        if (p == null) {
-            System.out.println("The key " + x + "does not exists, no deletion");
-            return;
-        }//not found
-        if (p.left == null && p.right == null) {
-            if (f == null) {//p is root
-                root = null;
+        return;
+    }
+    // Case 2: p has a left child node
+    if (p.left != null && p.right == null) {
+        if (f == null) {
+            root = p.left;
+        } else {
+            if (p == f.left) {
+                f.left = p.left;
             } else {
-                if (p == f.left) {
-                    f.left = null;
-                } else {
-                    f.right = null;
-                }
+                f.right = p.left;
             }
-            return;
         }
-        if (p.left != null && p.right == null) {
-            if (f == null) {
-                root = p.left;
+        return;
+    }
+    // Case 3: p has a right child node
+    if (p.left == null && p.right != null) {
+        if (f == null) {
+            root = p.right;
+        } else {
+            if (p == f.left) {
+                f.left = p.right;
             } else {
-                if (p == f.left) {
-                    f.left = p.left;
-                } else {
-                    f.right = p.left;
-                }
+                f.right = p.right;
             }
-            return;
         }
-        if (p.left != null && p.right == null) {
-            if (f == null) {
-                root = p.right;
-            } else {
-                if (p == f.left) {
-                    f.left = p.right;
-                } else {
-                    f.right = p.right;
-                }
-            }
-            return;
+        return;
+    }
+    // Case 4: p has two children
+    if (p.left != null && p.right != null) {
+        Node q = p.left;
+        Node fr, rp;
+        fr = null;
+        rp = q;
+        while (rp.right != null) {
+            fr = rp;
+            rp = rp.right;
         }
-        if (p.left != null && p.right != null) {
-            Node q = p.left;
-            Node fr, rp;
-            fr = null;
-            rp = q;
-            while (rp.right != null) {
-                fr = rp;
-                rp = rp.right;
-            }//rp  is right most node
-            p.info = rp.info;
-            if (fr == null) {
-                p.left = q.left;
-            }
+        p.info = rp.info;
+        if (fr == null) {
+            p.left = q.left;
+        } else {
             fr.right = rp.left;
         }
     }
+}
 
     void deleteByMerging(int x) {
         if (isEmpty()) {

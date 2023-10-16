@@ -13,8 +13,8 @@
     </head>
     <body>
         <%
-            if(request.getAttribute("name")!=null){
-                String name = (String)request.getAttribute("name");
+            if(request.getParameter("name")!=null){
+                String name = request.getParameter("name");
         %>
         <h1>Hello <%=(name)%></h1>
         <%

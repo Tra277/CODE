@@ -8,7 +8,7 @@
     </head>
     <body>
         <div id="menu-tab">
-            <%@include file="menu.jsp" %>
+            <jsp:include page="menu.jsp"/>
         </div>
         <div class="clr"></div>
         <div>

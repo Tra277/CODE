@@ -1,6 +1,6 @@
 <%-- 
     Document   : tinh
-    Created on : Sep 24, 2023, 3:58:13 PM
+    Created on : Oct 8, 2023, 4:42:29 PM
     Author     : alexf
 --%>
 
@@ -10,21 +10,61 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style>
+            *{
+                margin: auto;
+            }
+            .label,input,select,option{
+                font-size: 30px;
+                color:blue;
+            }
+            .nen{
+                background: bisque;
+                height:auto;
+                width: 40%;
+            }
+
+        </style>
     </head>
     <body>
-        <h1>Bai tap 1:</h1>
-        <form action="tinh" method="post">
-            enter radius:<input type="text" name="radius"/><br/>
-            <input type="submit" value="Calculate"/>
-        </form>
-        <%
-            if(request.getAttribute("dt")!=null){
-                double dt = (double) request.getAttribute("dt");
-                //vi getAttribute no tra ve object nen can ep kieu ve double
-        %>
-        <h2>Dien tich la:<%= dt%></h2>
-        <%
-            }
-        %>
+        <div class="nen">
+            <h1>A simple calculator</h1>
+            <hr/>
+            <form>
+                <table>
+                    <tr>
+                        <td class="label">Enter number 1:</td>
+                        <td><input type="text" name="num1"></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Enter number 2:</td>
+                        <td><input type="text" name="num2"></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Select operation:</td>
+                        <td>
+                            <select name="op">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                                <option value="*">*</option>
+                                <option value="/">/</option>
+
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Tinh! "></td>
+                    </tr>
+                </table>
+            </form>
+            <hr/>
+            <h2>
+                <jsp:useBean id="c" class="model.Math"/>
+                <jsp:setProperty name="c" property="*"/>
+                <jsp:getProperty name="c" property="result"/>
+            </h2>
+        </div>
+
     </body>
 </html>
