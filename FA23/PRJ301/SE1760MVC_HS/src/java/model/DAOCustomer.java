@@ -84,6 +84,7 @@ public class DAOCustomer extends DBConnect {
             pre.setString(11, cus.getCustomerId());
             n = pre.executeUpdate();
         } catch (SQLException e) {
+            System.out.println(e);
         }
         return n;
     }
